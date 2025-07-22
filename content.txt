@@ -12,7 +12,15 @@
     > easy to colab
 
 5. End to end project (chatbook class)
+    > function vs method
+    > magic method or dunder method
+    > self
+    > You can create attribute outside class as well
+
     > encapsulation
     > getter and setter
     > static method
+
+    > Inheritance
+
 
