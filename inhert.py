@@ -16,7 +16,7 @@
 #     def speak(self):
 #         print(f"{self.name} barks. He is very {self.behaviour}")
 #         # you you have no constructor in child class, then bydefault python enter to the parent class, and treat parent class attribute to as child class.
-#         # But if you initiate attribute with the hel of constructor inside child class, then parent class attributes are gets not-inherited.
+#         # But if you initiate attribute with the help of constructor inside child class, then parent class attributes are gets not-inherited.
 #         # This is called constructor overloading. By making constructor in child class and python avoid parent class constructor.
 #         # Method overloading also we have learnt, if already same parent class method name exist in child class, rather than using the method of parent class, it used own method of child class.
 
