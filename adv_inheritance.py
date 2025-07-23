@@ -150,36 +150,69 @@
 # Hybrid Inheritance
 
 # Base class
-# class Animal:
-#     def __init__(self, name):
-#         self.name = name
+class Animal:
+    def __init__(self, name):
+        self.name = name
 
-#     def sound(self):
-#         print(f"{self.name} makes a sound.")
+    def sound(self):
+        print(f"{self.name} makes a sound.")
 
 # # Intermediate class 1 (Hierarchical)
-# class Mammal(Animal):
-#     def feed(self):
-#         print(f"{self.name} is feeding milk.")
+class Mammal(Animal):
+    def feed(self):
+        print(f"{self.name} is feeding milk.")
 
 # # Intermediate class 2 (Multiple)
-# class Bird(Animal):
-#     def fly(self):
-#         print(f"{self.name} is flying.")
+class Bird(Animal):
+    def fly(self):
+        print(f"{self.name} is flying.")
 
 # # Derived class (Multiple Inheritance)
-# class Bat(Mammal, Bird):
-#     def __init__(self, name):
-#         Mammal.__init__(self, name)  # Explicitly calling the constructor
+class Bat(Mammal, Bird):
+    def __init__(self, name):
+        Mammal.__init__(self, name)  # Explicitly calling the constructor
 
-#     def nocturnal(self):
-#         print(f"{self.name} is nocturnal.")
+    def nocturnal(self):
+        print(f"{self.name} is nocturnal.")
 
 # # Create an instance of Bat
-# bat = Bat("Bruce")
-# bat.sound()     # Output: Bruce makes a sound.
-# bat.feed()      # Output: Bruce is feeding milk.
-# bat.fly()       # Output: Bruce is flying.
-# bat.nocturnal() # Output: Bruce is nocturnal.
+bat = Bat("Bruce")
+bat.sound()     # Output: Bruce makes a sound.
+bat.feed()      # Output: Bruce is feeding milk.
+bat.fly()       # Output: Bruce is flying.
+bat.nocturnal() # Output: Bruce is nocturnal.
+
+# "If a child class (like Bat) has its own constructor, then it must use super() to access the parent’s constructor."
+# Yes — but only applies to constructors (__init__), not to methods like fly() or feed().
+
+# You can access all methods of parent classes just by inheriting from them — no need to call super() or even call the parent constructor unless their methods depend on something initialized in it.
+# means, If a method in the parent class needs some data or attribute (like self.name) that is only created inside the parent's constructor (__init__),
+# then you must call the parent's constructor (via super() or directly), otherwise that method will crash.
+
+# Example code:
+# class Parent:
+#     def __init__(self, name):
+#         self.name = name
+    
+#     def greet(self):
+#         print(f"Hi, I am {self.name}")
+
+# class Child(Parent):
+#     def __init__(self):
+#         print("Child init — but not calling super().__init__")
+
+# c = Child()
+# c.greet()  # Error: AttributeError: 'Child' object has no attribute 'name'
+
+# Solution:
+
+# Fix it with super()
+
+# class Child(Parent):
+#     def __init__(self):
+#         super().__init__("Bruce")  # Calls parent's constructor
+
+# c = Child()
+# c.greet() 
 
 # ------------------------------------------------------------
